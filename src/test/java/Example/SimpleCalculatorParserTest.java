@@ -1,9 +1,9 @@
 package Example;
 
+import junit.framework.TestCase;
+
 import java.io.ByteArrayInputStream;
 import java.util.List;
-import static junit.framework.Assert.assertEquals;
-import junit.framework.TestCase;
 
 public class SimpleCalculatorParserTest extends TestCase {
 
