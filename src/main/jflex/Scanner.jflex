@@ -2,6 +2,8 @@ package Example;
 
 import java_cup.runtime.SymbolFactory;
 %%
+%line
+%column
 %cup
 %class Scanner
 %{
