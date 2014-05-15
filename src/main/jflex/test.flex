@@ -51,6 +51,7 @@ real_literal = ({digit})? "." {digit} ({exponent_part})? ({real_type_suffix})? |
 				{digit} {real_type_suffix}
 
 
+
 //定义Unicode码（“\u00222”）和 ASCII码（"\0x40"）
 hex_escape = x{hex_digit} ({hex_digit}({hex_digit} {hex_digit}?)?)?
 unicode_escape = u{hex_digit} {hex_digit} {hex_digit} {hex_digit} | U{hex_digit} {hex_digit} {hex_digit} {hex_digit} {hex_digit} {hex_digit} {hex_digit} {hex_digit}
