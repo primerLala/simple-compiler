@@ -86,7 +86,7 @@
                             <tasks>
                                 <echo>Running Java CUP</echo>
                                 <taskdef name="cup" classname="java_cup.anttask.CUPTask" classpathref="maven.compile.classpath" />
-                                <cup srcfile="${basedir}/src/main/cup/Parser.cup" destdir="${basedir}/target/generated-sources/parser-sources" parser="Parser" interface="true" />
+                                <cup srcfile="${basedir}/src/main/cup/simpleC.cup" destdir="${basedir}/target/generated-sources/parser-sources" parser="Parser" interface="true" />
                             </tasks>
                         </configuration>
                     </execution>
