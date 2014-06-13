@@ -1,18 +1,4 @@
-package com.zll.main; /**
- * Tecnológico de Costa Rica
- * Escuela de Ingeniería en Computación
- *
- * Created by:
- *
- * Fabián Lizarme Urdánegui
- * Alexis Gamboa Soto
- * José Mario Marín Brenes
- *
- * As a project for the Compilers and Intepreters course
- *
- * April 2014
- */
-
+package com.zll.main;
 
 import javax.swing.text.*;
 import java.awt.*;
