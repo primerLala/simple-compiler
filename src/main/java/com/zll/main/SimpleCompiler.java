@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UserInterface extends JFrame {
+public class SimpleCompiler extends JFrame {
 
     private final DefaultTableModel dmTokenTable;
     private JMenuItem Analyze;
@@ -37,7 +37,7 @@ public class UserInterface extends JFrame {
     /**
      * Creates new form UserInterface
      */
-    public UserInterface() {
+    public SimpleCompiler() {
         initComponents();
 
         StyledDocument doc = new StyledDocument();
@@ -66,7 +66,7 @@ public class UserInterface extends JFrame {
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SimpleCompiler.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -76,7 +76,7 @@ public class UserInterface extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new UserInterface().setVisible(true);
+                new SimpleCompiler().setVisible(true);
             }
         });
     }
@@ -93,7 +93,7 @@ public class UserInterface extends JFrame {
         try {
             lan.analyzeFile(lan.fromStringToReader(SourceCodePane.getText()));
         } catch (IOException ex) {
-            Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SimpleCompiler.class.getName()).log(Level.SEVERE, null, ex);
         }
         lan.printAll();
 

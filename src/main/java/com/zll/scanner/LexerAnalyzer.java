@@ -1,6 +1,6 @@
 package com.zll.scanner;
 
-import com.zll.main.UserInterface;
+import com.zll.main.SimpleCompiler;
 import com.zll.parser.sym;
 import com.zll.token.MySymbol;
 import com.zll.token.TokenData;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class LexerAnalyzer {
 
-    UserInterface ui;
+    SimpleCompiler ui;
     private Map<String, TokenData> tokenMap;
 
     /**
@@ -20,7 +20,7 @@ public class LexerAnalyzer {
      *
      * @param pUI UserInterface class, this can act as a controller
      */
-    public LexerAnalyzer(UserInterface pUI) {
+    public LexerAnalyzer(SimpleCompiler pUI) {
         this.tokenMap = new HashMap<String, TokenData>();
         ui = pUI;
     }

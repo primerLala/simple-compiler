@@ -4,8 +4,10 @@ package com.zll.parser;//----------------------------------------------------
 //----------------------------------------------------
 
 import com.zll.parser.tree.SyntaxTree;
+import com.zll.scanner.ScannerC;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -756,7 +758,7 @@ public class Parser extends java_cup.runtime.lr_parser {
         return 1;
     }
 
-//  DefaultMutableTreeNode root = new DefaultMutableTreeNode("file", 0);
+    Stack<Integer> results = new Stack<Integer>();
 
     Map<String, DefaultMutableTreeNode> nodeMap = new HashMap<String, DefaultMutableTreeNode>();
 
@@ -765,6 +767,12 @@ public class Parser extends java_cup.runtime.lr_parser {
     Stack<DefaultMutableTreeNode> stmtListStack = new Stack<DefaultMutableTreeNode>();
 
     SyntaxTree tree = new SyntaxTree();
+
+    public static List<Integer> getResults(InputStream iStream) throws Exception {
+        Parser p = new Parser(new ScannerC(iStream));
+        p.parse();
+        return p.results;
+    }
 
     public SyntaxTree getSyntaxTree() {
         return tree;
@@ -1555,6 +1563,15 @@ class CUP$Parser$actions {
                 add_expression.add(new DefaultMutableTreeNode("MINUS - -"));
                 add_expression.add(this.parser.nodeMap.get("mult_expression"));
                 this.parser.nodeMap.put("add_expression", add_expression);
+                if (f.contains("(") && f.contains(")")) {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(Integer.valueOf(e) - this.parser.results.pop());
+                    else this.parser.results.push(Integer.valueOf(e) - Integer.valueOf(f));
+                } else {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(this.parser.results.pop() - Integer.valueOf(f));
+                    else this.parser.results.push(Integer.valueOf(e) - Integer.valueOf(f));
+                }
 
                 CUP$Parser$result = parser.getSymbolFactory().newSymbol("add_expression", 23, ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top - 2)), ((java_cup.runtime.Symbol) CUP$Parser$stack.peek()), RESULT);
             }
@@ -1577,6 +1594,15 @@ class CUP$Parser$actions {
                 add_expression.add(new DefaultMutableTreeNode("PLUS - +"));
                 add_expression.add(this.parser.nodeMap.get("mult_expression"));
                 this.parser.nodeMap.put("add_expression", add_expression);
+                if (f.contains("(") && f.contains(")")) {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(Integer.valueOf(e) + this.parser.results.pop());
+                    else this.parser.results.push(Integer.valueOf(e) + Integer.valueOf(f));
+                } else {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(this.parser.results.pop() + Integer.valueOf(f));
+                    else this.parser.results.push(Integer.valueOf(e) + Integer.valueOf(f));
+                }
 
                 CUP$Parser$result = parser.getSymbolFactory().newSymbol("add_expression", 23, ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top - 2)), ((java_cup.runtime.Symbol) CUP$Parser$stack.peek()), RESULT);
             }
@@ -1616,6 +1642,15 @@ class CUP$Parser$actions {
                 mult_expression.add(new DefaultMutableTreeNode("MOD - %"));
                 mult_expression.add(this.parser.nodeMap.get("unary_expression"));
                 this.parser.nodeMap.put("mult_expression", mult_expression);
+                if (f.contains("(") && f.contains(")")) {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(Integer.valueOf(e) % this.parser.results.pop());
+                    else this.parser.results.push(Integer.valueOf(e) % Integer.valueOf(f));
+                } else {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(this.parser.results.pop() % Integer.valueOf(f));
+                    else this.parser.results.push(Integer.valueOf(e) % Integer.valueOf(f));
+                }
 
                 CUP$Parser$result = parser.getSymbolFactory().newSymbol("mult_expression", 22, ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top - 2)), ((java_cup.runtime.Symbol) CUP$Parser$stack.peek()), RESULT);
             }
@@ -1638,6 +1673,15 @@ class CUP$Parser$actions {
                 mult_expression.add(new DefaultMutableTreeNode("DIV - /"));
                 mult_expression.add(this.parser.nodeMap.get("unary_expression"));
                 this.parser.nodeMap.put("mult_expression", mult_expression);
+                if (f.contains("(") && f.contains(")")) {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(Integer.valueOf(e) / this.parser.results.pop());
+                    else this.parser.results.push(Integer.valueOf(e) / Integer.valueOf(f));
+                } else {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(this.parser.results.pop() / Integer.valueOf(f));
+                    else this.parser.results.push(Integer.valueOf(e) / Integer.valueOf(f));
+                }
 
                 CUP$Parser$result = parser.getSymbolFactory().newSymbol("mult_expression", 22, ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top - 2)), ((java_cup.runtime.Symbol) CUP$Parser$stack.peek()), RESULT);
             }
@@ -1660,6 +1704,15 @@ class CUP$Parser$actions {
                 mult_expression.add(new DefaultMutableTreeNode("STAR - *"));
                 mult_expression.add(this.parser.nodeMap.get("unary_expression"));
                 this.parser.nodeMap.put("mult_expression", mult_expression);
+                if (f.contains("(") && f.contains(")")) {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(Integer.valueOf(e) * this.parser.results.pop());
+                    else this.parser.results.push(Integer.valueOf(e) * Integer.valueOf(f));
+                } else {
+                    if (!this.parser.results.isEmpty())
+                        this.parser.results.push(this.parser.results.pop() * Integer.valueOf(f));
+                    else this.parser.results.push(Integer.valueOf(e) * Integer.valueOf(f));
+                }
 
                 CUP$Parser$result = parser.getSymbolFactory().newSymbol("mult_expression", 22, ((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top - 2)), ((java_cup.runtime.Symbol) CUP$Parser$stack.peek()), RESULT);
             }
